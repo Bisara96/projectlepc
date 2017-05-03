@@ -46,13 +46,13 @@ $age = (date("md", date("U", mktime(0, 0, 0, $_POST["DOBMonth"], $_POST["DOBDay"
   
  
   
-$servername = "localhost";
+/*$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db2";
+$dbname = "db2";*/
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
 
 // Check connection
 

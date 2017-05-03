@@ -593,9 +593,8 @@ while (($prodrow=mysqli_fetch_row($result)) && ($i < $count)){
 
       
 
-        Email - socod@gmail.com<br>
-        Mobile - 0776383151<br>
-        Address - No.88,Perera Road, Colombo 05.<br>
+        Email - saucecodeinc@gmail.com<br>
+
 
         
       
