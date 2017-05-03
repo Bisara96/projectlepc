@@ -1,7 +1,7 @@
 <?php 
 SESSION_START();
 
-$conn = mysqli_connect("lepc.database.windows.net:8080","saucecode","TheGoviya1234","db2");
+$conn = mysqli_connect("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
 
 // Check connection
 
