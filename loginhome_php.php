@@ -17,12 +17,13 @@ catch (PDOException $e) {
 
 /*$mysqli = new mysqli("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
 /* check connection */
-if (mysqli_connect_errno()) {
+/*if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }*/
 $query = "SELECT * FROM formData WHERE emailAdd = '$email'";
-$result = mysqli_query($mysqli, $query);
+//$result = mysqli_query($mysqli, $query);
+$result = $conn->query($query);
 $count = mysqli_num_rows($result);
 
 
