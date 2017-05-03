@@ -6,14 +6,21 @@ $email = $_REQUEST["em"];
 $loginstatus = "loginstatus$email";
 $password = $_REQUEST["ps"];
 
+try {
+    $conn = new PDO("sqlsrv:server = tcp:lepc.database.windows.net,1433; Database = db2", "saucecode", "TheGoviya1234");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
 
-
-$mysqli = new mysqli("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
+/*$mysqli = new mysqli("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
 /* check connection */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
-}
+}*/
 $query = "SELECT * FROM formData WHERE emailAdd = '$email'";
 $result = mysqli_query($mysqli, $query);
 $count = mysqli_num_rows($result);
