@@ -1,0 +1,141 @@
+<html>
+<head>
+</head>
+<body>
+will be added under this <br>
+<div id="ram">
+</div>
+<br><br><br><br>
+<div id="pImgId">
+</div>
+before this
+<script>
+addnew();
+/*
+addNew();
+
+
+
+ function addNew(){
+    alert("blabla");
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "prodLoad.php" ,false);
+  xhttp.send();
+
+  var word = xhttp.responseText;
+  alert(word);
+  if (word != "") {
+  var arra = new Array();
+  arra = word.split("//");
+
+  for (var i = 0;i < arra.length;i++){ //printing the array (for debugging purposes)
+     // alert(arra[i]);
+  }
+
+  
+  //alert("last one "+arra[arra.length-2]);
+  arra.pop();
+  var noOfprods = (arra.length)/4; //to omit the blank in the last index of the array
+
+for (var i = 0;i < arra.length;i++){ //printing the array (for debugging purposes)
+     //alert(arra[i]);
+  }
+
+  var newprods = Array();
+
+  var m = 0;
+  var x = 0;
+
+  while (m < noOfprods && (x < arra.length)) {
+    var newarra = arra.slice(x,x = x + 4); 
+    
+    newprods[m] = Array();
+
+    newprods[m] = newarra;
+    //alert("hhhhhhhh");
+    //alert(newprods[m][0]+""+newprods[m][1]+""+newprods[m][2]+""+newprods[m][3]);
+
+    m++;
+
+}
+//alert("here");
+//alert(newprods.length);
+
+  for (var i = 0;i < newprods.length;i++){
+
+    var prodId = newprods[i][0];
+    var imgSrc = newprods[i][1];
+    var prodName = newprods[i][2];
+    var prodType = newprods[i][3];
+    var radioName = "";
+    var divId = "";
+//alert("here"+i);
+    var image = document.createElement("IMG");
+    image.id = prodId;
+    image.name = prodId;
+    image.setAttribute("src", imgSrc);
+    image.setAttribute("width", "304");
+    image.setAttribute("width", "228");
+    image.setAttribute("alt", prodName);
+    image.setAttribute("class", "pImgClass");
+    image.setAttribute("style", 'display:none;width="300";height="250";');
+
+    var div = document.getElementById("ram");
+    
+
+    var divimg = document.getElementById("pImgID");
+    divimg.appendChild(image);
+
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.id = prodId;
+    //alert(radioName);
+    radio.name = radioName;
+    //radio.value = prodId;
+    radio.setAttribute("value", prodId);
+    //alert(radio.value);
+    //alert(radio.id);
+    //var idd = document.getElementById(prodId);
+
+    /*
+
+    radio.addEventListener("click", function(){
+    //alert("hereeee");
+    displayImg(this.value);
+    loadDoc(this.value);
+});
+
+*/ /*
+    var text = document.createTextNode(prodName);
+    div.appendChild(radio);
+    div.appendChild(text);
+    div.innerHTML = div.innerHTML + "<br />";
+    //var temp = document.getElementById(prodId).value;
+    //alert("docel"+temp);
+    }
+
+  }
+  
+
+  }
+
+*/
+function addnew(){
+var radioButton = document.createElement('input');
+radioButton.type = "radio";
+radioButton.id = "123";
+radioButton.onclick = function(){ alert('this is test'); };
+var div = document.getElementById("ram");
+div.appendChild(radioButton);
+
+var radioButton = document.createElement('input');
+radioButton.type = "radio";
+radioButton.id = "123456";
+radioButton.onclick = function(){ alert('this is test no2'); };
+var div = document.getElementById("ram");
+div.appendChild(radioButton);
+}
+
+</script>
+</body>
+</html>

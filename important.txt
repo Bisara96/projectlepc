@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to make a BUTTON element with text.</p>
+
+
+<label for = "ram">RAM : </label><br>
+  		<input type = "radio" name = "ram" value = "rm0001" onclick = "displayImg('rm1');loadDoc(value)"; >Crucial 8GB 2x4GB DDR4 2133MHz Memory CT2K4G4DFS8</input><br>
+  		<input type = "radio" name = "ram" value = "rm0002" onclick = "displayImg('rm2');loadDoc(value)";>Crucial 16GB 2x8GB DDR4 2133MHz Memory CT2K8G4DFD8     &nbsp</input><br>
+  		<input type = "radio" name = "ram" value = "rm0003" onclick = "displayImg('rm3');loadDoc(value)";>Corsair Vengeance Red LPX 16GB 4x4GB DDR4 2666MHz     &nbsp</input><br>
+  		<input type = "radio" name = "ram" value = "rm0004" onclick = "displayImg('rm4');loadDoc(value)";>Corsair Dominator Platinum 16GB 4x4GB DDR4 2800MHz</input><br>
+  		<input type = "radio" name = "ram" value = "rm0005" onclick = "displayImg('rm5');loadDoc(value)";>Crucial 32GB 4x8GB DDR4 2133MHz Memory CT4K8G4DFD8</input><br>
+  		
+<button onclick="myFunction()">Try it</button>
+<script>
+function myFunction() {
+    var btn = document.createElement("input");
+btn.type = "radio";
+btn.name = "ram";
+var objLabel = document.createElement("label");
+objLabel.htmlFor = btn.id;
+objLabel.appendChild(btn);
+var text = document.createTextNode("new ram");
+objLabel.appendChild(text);
+    document.body.appendChild(btn);
+document.body.appendChild(objLabel);
+}
+</script>
+
+</body>
+</html>

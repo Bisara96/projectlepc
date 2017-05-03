@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+myFunction();
+function myFunction() {
+  alert("adding");
+    var btn = document.createElement("input");
+btn.type = "button";
+btn.name = "ram";
+btn.onclick="myFunction()";
+var objLabel = document.createElement("label");
+objLabel.htmlFor = btn.id;
+objLabel.appendChild(btn);
+var text = document.createTextNode("new ram");
+objLabel.appendChild(text);
+    document.body.appendChild(btn);
+document.body.appendChild(objLabel);
+}
+function click(){
+alert("clciked");}
+</script>
+</body>
+</html>
+
+function addNew(){
+    alert("BBBBB");
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.id = "cpu";
+    var text = document.createTextNode("New ram");
+    var label = document.createElement("label");
+    label.htmlfor = radio.id;
+    label.appendChild(radio);
+    label.appendChild(text);
+    
+    var x = document.getElementById("newitem");
+    x.appendChild(radio);
+    x.appendChild(label);
+    
+    document.body.appendChild(radio);
+    document.body.appendChild(label);
+    alert("created");
+  }

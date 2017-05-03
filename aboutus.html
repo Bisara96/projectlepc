@@ -1,0 +1,315 @@
+<html>
+<head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+<link href ="style1.css" rel = "stylesheet"> 
+  The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Le PC Customs - Products</title>
+
+ <!-- Bootstrap  <link href="style1.css" rel="stylesheet"> -->
+
+ <link href='logincss.css' rel='stylesheet' type='text/css'>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/hcss.css" rel="stylesheet">
+     <link href="css/custom.css" rel="stylesheet">
+     <link href="css/productsCustom.css" rel="stylesheet">
+    
+     
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+
+#map-container {
+        width: 80%;
+        height: 50%;
+        margin: 0 auto;
+        padding-top: 134.74026%;
+        position: relative;
+      }
+      #map {
+        width: 100%;
+        height: 30%; /* had to specify height/width */
+        position: absolute;
+        top: 0; 
+        right: 0;
+        left: 0; 
+        bottom: 0; 
+      }
+
+#ar {
+  top: 100px;
+}
+#Name {
+  font-family: "Times New Roman", Times, serif !important; 
+
+}
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      var pxLat = 6.865195,
+          pxLng = 79.859862;
+      
+      // When the window has finished loading create our google map below
+      var map = google.maps.event.addDomListener(window, 'load', init);
+      
+      function init() {
+          // Basic options for a simple Google Map
+          // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+          var mapOptions = {
+              // How zoomed in you want the map to start at (always required)
+              zoom: 15,
+      
+              disableDefaultUI: true,
+              disableDoubleClickZoom: true,
+              scrollwheel: false,
+              // The latitude and longitude to center the map (always required)
+              center: new google.maps.LatLng(pxLat, pxLng), // New York
+      
+              // How you would like to style the map. 
+              // This is where you would paste any style found on Snazzy Maps.
+              styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+          };
+      
+          // Get the HTML DOM element that will contain your map 
+          // We are using a div with id="map" seen below in the <body>
+          var mapElement = document.getElementById('map');
+      
+          // Create the Google Map using our element and options defined above
+          map = new google.maps.Map(mapElement, mapOptions);
+      
+          // Let's also add a marker while we're at it
+          var marker = new google.maps.Marker({
+              icon: {
+                fillColor: "#f52654",
+                fillOpacity: 1,
+                strokeWeight: 0,
+                path: "M15,0C6.7,0,0,6.7,0,15c0,0,0,0.1,0,0.1c0,0.5,0,1.1,0.1,1.8c0.6,5.4,3.7,9.7,6.6,13.8c3.5,4.8,6.8,9.4,6.8,15.9c0,0.8,0.7,1.5,1.5,1.5c0.8,0,1.5-0.7,1.5-1.5c0-6.5,3.3-11,6.8-15.9c3-4.1,6-8.4,6.6-13.8C30,16.2,30,15.6,30,15C30,6.7,23.3,0,15,0z",
+                scale: 1
+              },
+              position: new google.maps.LatLng(pxLat, pxLng),
+              map: map,
+              title: 'Colombo!'
+          });
+      
+          //- map.addListener('center_changed', function() {
+          //-     window.setTimeout(function() {
+          //-       map.panTo(marker.getPosition());
+          //-     }, 500);
+          //- });
+      }
+      
+      function newLocation(level) {
+      
+         if(map.getZoom() > 15) { map.setZoom(15) } else { map.setZoom(level) }
+      }
+      
+      document.querySelector('#map-arrow').addEventListener('click', function() {
+        newLocation(Math.round(Math.random()*10) + 13);
+      }, false);
+    </script>
+  
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+ <nav class="navbar transparent navbar-inverse navbar-static-top" style="background-color:black;"><br><br>
+          <div class="container-fluid" >
+              <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand" href="#">
+                <img id="brand-image" alt="Le PC"  src="logopng.png"/>
+              </div>
+            </div>
+          <div>
+          <!--Menu Items-->
+            <div class="collapse navbar-collapse" id="mainNavBar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">HOME</a></li>
+                <li ><a href="products.html">BUILD YOUR PC</a></li>
+           
+
+
+          <!--drop down menu-->
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">PRODUCTS<span class="carrot"></span></a>
+                  <ul class="dropdown-menu">
+                    <li ><a href="#">CUSTOM PCs</a></li>
+                    <li class="divider"></li>
+                    <li ><a href="products3.html#macs">Mac</a></li>
+                    <li ><a href="products3.html#bpcs">Laptops</a></li>
+                    <li ><a href="products3.html#cpcs">Gaming PCs</a></li>
+                    
+                  </ul>
+                </li>
+                <li ><a href="contactus.html">CONTACT US</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                    <li><a class="btn btn-primary btn-lg outline" href="formpage.html" role="button" id = "signup">SIGN UP</a></p>
+                      <li><a class="btn btn-primary btn-lg outline" href="cartBill1.php" role="button" id = "mycart" style="display:none">MY CART</a></p>
+                    <li id = "loginbtn" role = "button" onclick="onloginbtn()"><a>LOG IN</a></li>
+                    <li id = "logoutbtn" role = "button" style="display:none" onclick="onlogoutbtn()"><a>LOG OUT</a></li>
+                </ul>
+                </div>
+          </div>
+
+          </div>
+          <br><br>
+        </nav>
+                 <script>
+                  
+                  verifyLogin();
+
+                  function verifyLogin(){
+                       var xhttp = new XMLHttpRequest();
+                        xhttp.open("GET", "loginverify.php", false);
+                        xhttp.send();
+                        var status = xhttp.responseText;
+                        //var status = "true";
+                        //alert (status);
+                        if (status == "true"){
+                                                
+                         document.getElementById("loginbtn").style.display = "none";
+                         document.getElementById("logoutbtn").style.display = "block";
+                         document.getElementById("signup").style.display = "none";
+                         document.getElementById("mycart").style.display = "block";
+                    } else {
+                         document.getElementById("loginbtn").style.display = "block";
+                         document.getElementById("logoutbtn").style.display = "none";
+                         document.getElementById("signup").style.display = "block";
+                         document.getElementById("mycart").style.display = "none";
+                    }
+               }
+
+               function onlogoutbtn(){
+                alert ("b1");
+               var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "signout.php", false);
+                xhttp.send();
+                alert ("b2");
+                verifyLogin();
+              }
+
+               
+                </script>
+
+               <script>
+                function g() {
+                var fileName = document.getElementById("image").value;
+                fileName = fileName.replace(/^.*\\/, "");
+                  
+                  document.getElementById("Fname").innerHTML=fileName;
+                }
+                </script>
+
+                
+
+      <!-- content -->
+      <div class="container">
+        <div class="jumbotron">
+          <h1>About Us</h1>      
+          <p>Click on the name for the CV</p>
+          <a href="cv/buwaneka.pdf"><h4>Buwaneka Thilakasiri</h4></a>
+          <a href="cv/pasan.pdf"><h4>Pasan Sumanaratne</h4></a>
+          <a href="cv/pasindu.pdf"><h4>Pasindu Piyatissa</h4></a>
+          <a href="#"><h4>Ishira Welihinda</h4></a>
+        </div>    
+      </div>
+
+       <div id="map-container">
+            <div id="map"></div>
+
+      <!-- footer -->
+  
+  <div class= "site-footer">
+
+  <div class= "container footerinfo">
+
+    
+
+    <div class= "row-fluid">
+      
+
+      <div class="col-sm-4">
+        
+          <h4>Social Media</h4>
+
+
+       
+        
+        <a href = "#facebook">Facebook</a><br>
+        <a href = "#instagram">Instagram</a><br>
+        <a href = "#google+">Google+</a><br>
+        
+       
+        
+      
+      </div>
+
+      <div class="col-sm-4">
+        <h4>Products</h4>
+
+        
+
+        <a href = "#products-mac">Macs</a><br>
+        <a href = "#products-custom">Branded PCs</a><br>
+        <a href = "#build your - pc">Custom PCs</a><br>
+
+        
+
+        
+        
+      </div>
+
+      <div class="col-sm-4">
+      <h4>Contact Details</h4>
+
+      
+
+        Email - socod@gmail.com<br>
+        Mobile - 0776383151<br>
+        Address - No.88,Perera Road, Colombo 05.<br>
+
+        
+      
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+  </div>
+
+  <div class="copyright">
+  © 2016 Team SauceCode
+
+  </div>
+
+</body>
+
+</html>

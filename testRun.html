@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+
+<ul class="w3-navbar w3-black">
+  <li><a href="#" onclick="displayProducts('cpuList')">CPU</a></li>
+  <li><a href="#" onclick="displayProducts('ramList')">Ram</a></li>
+
+</ul>
+
+	<div id = "cpuList" class = "partType">
+  		<label for = "cpu">CPU : </label><br>
+  		<input type = "radio" name = "cpu" value = "5000" checked >	Intel Skylake i7-6700K 4.0GHz LGA1151 Processor BX80662I76700K </input><br>
+  		<input type = "radio" name = "cpu" value = "8000">	Intel Skylake i5-6600K LGA1151 3.5GHz Processor BX80662I56600K   </input><br>
+  		<input type = "radio" name = "cpu" value = "10000">	Intel Skylake i5-6600 LGA1151 3.9GHz Processor BX80662I56600  </input><br>
+  		<input type = "radio" name = "cpu" value = "12000">	Intel Skylake i5-6500 LGA1151 3.6GHz Processor BX80662I56500   </input><br>
+  		<input type = "radio" name = "cpu" value = "6000">	Intel Skylake i5-6400 LGA1151 3.3GHz Processor BX80662I56400   </input><br>
+  	</div>
+  	<div id = "ramList" class = "partType">
+  		<label for = "ram">RAM : </label><br>
+  		<input type = "radio" name = "ram" value = "1000" checked>1 GB RAM</input><br>
+  		<input type = "radio" name = "ram" value = "2000" checked>2 GB RAM</input><br>
+  		<input type = "radio" name = "ram" value = "4000" checked>4 GB RAM</input><br>
+  		<input type = "radio" name = "ram" value = "8000" checked>8 GB RAM</input><br>
+  		<input type = "radio" name = "ram" value = "16000" checked>16 GB RAM</input><br>
+  	</div>
+
+<script>
+displayProducts("cpuList")
+
+	function displayProducts(productType){
+		var x = document.getElementsByClassName("partType");
+		var i;
+		for (i = 0;i < x.length;i++){
+			x[i].style.display = "none"; 
+		}
+
+		document.getElementById(productType).style.display = "block";
+
+	}
+</script>
+
+</body>
+</html> 

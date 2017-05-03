@@ -1,0 +1,12 @@
+<?php 
+SESSION_START();
+
+$email = $_SESSION['email'];
+
+echo "Apples : <br> Unit Price = "; 
+echo "$_SESSION['$email']['apples'][0]";  
+echo "<br> Quantity = "; 
+echo "$_SESSION['$email']['apples'][1]";
+
+
+?>

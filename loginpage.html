@@ -1,0 +1,85 @@
+<html>
+<head>
+<link href ="style1.css" rel = "stylesheet">
+	
+
+</head>
+<body>
+<table>
+<tr>
+<td>
+<form id="login" action="login_page.php" onsubmit="return validateForm()" method="post" >
+<div>
+    <p>Customer Login : </p>
+    <label for="email">Email : </label>
+    <input type="text" id="email" name="email"  style="width:65%">
+	<br>
+    <label for="password">Password : </label>
+    <input type="password" id="password" name="password" style="width:40%">
+	<br>
+	<input type="button" value="Reset" onclick="resetbtnfunction()">
+    <input type="submit" value="Login" >
+	
+</div>
+</form>
+</td>
+<td>
+    <form id="loginD" action="loginD_page.php" onsubmit="return validateFormD()" method="post" >
+    <div>
+    <p>Dealer Login : </p>
+    <label for="emailD">Email : </label>
+    <input type="text" id="emailD" name="emailD"  style="width:65%">
+    <br>
+    <label for="passwordD">Password : </label>
+    <input type="password" id="passwordD" name="passwordD" style="width:40%">
+    <br>
+    <input type="button" value="Reset" onclick="resetbtnfunctionD()">
+    <input type="submit" value="Login" >
+    
+</div>
+</form>
+</td>
+</tr>
+</table>
+<script>
+function resetbtnfunction() {
+    document.getElementById("login").reset();
+}
+
+function validateForm() {
+    var x = document.forms["login"]["email"].value;
+	var y = document.forms["login"]["password"].value;
+	
+	
+   if (x == null || x == "") {
+        alert("Email must be filled out");
+        return false;
+    } else if (y == null || y == "") {
+        alert("Please enter a password");
+        return false;
+    }  
+	
+}
+
+function resetbtnfunctionD() {
+    document.getElementById("loginD").reset();
+}
+
+function validateFormD() {
+    var xD = document.forms["loginD"]["emailD"].value;
+    var yD = document.forms["loginD"]["passwordD"].value;
+    
+    
+   if (xD == null || xD == "") {
+        alert("Email must be filled out");
+        return false;
+    } else if (yD == null || yD == "") {
+        alert("Please enter a password");
+        return false;
+    }  
+    
+}
+
+</script>
+</body>
+</html>

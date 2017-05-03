@@ -1,0 +1,11 @@
+<?php 
+session_start();
+
+
+$prodName = $_POST['pName'];
+$prodType = $_POST['pType'];
+$prodPrice = $_POST['price'];
+
+echo "$prodName<br>$prodType<br>$prodPrice";
+
+?>

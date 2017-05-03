@@ -1,0 +1,28 @@
+<?php 
+session_start();
+
+$mysql = new mysqli("$localhost","root","","db2");
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+$query = "SELECT prodID FROM newproducts";
+$newprods  = array();
+
+$result = mysqli_query($mysqli,$query);
+$count = mysqli_num_rows($result);
+
+if ($count == 0){
+	echo "";
+	exit();
+}
+
+$i = 0;
+while ($row=mysqli_fetch_row($result) && $i < $count){                                                                            ){
+	$newprods[$i] = array($row[0],$row[1]);
+	echo $newprods[$][0];
+	echo $newprods[$][1];
+}
+
+?>

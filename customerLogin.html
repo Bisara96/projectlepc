@@ -1,0 +1,46 @@
+<html>
+<head>
+<link href ="style1.css" rel = "stylesheet">
+	
+
+</head>
+<body>
+
+<form id="login" action="login_page.php" onsubmit="return validateForm()" method="post" >
+<div>
+ 
+    <label for="email">Email : </label>
+    <input type="text" id="email" name="email"  style="width:22.4%">
+	<br>
+    <label for="password">Password : </label>
+    <input type="password" id="password" name="password" style="width:20%">
+	<br>
+	<input type="button" value="Reset" onclick="resetbtnfunction()">
+    <input type="submit" value="Login" >
+	
+</div>
+</form>
+
+<script>
+function resetbtnfunction() {
+    document.getElementById("login").reset();
+}
+
+function validateForm() {
+    var x = document.forms["login"]["email"].value;
+	var y = document.forms["login"]["password"].value;
+	
+	
+   if (x == null || x == "") {
+        alert("Email must be filled out");
+        return false;
+    } else if (y == null || y == "") {
+        alert("Please enter a password");
+        return false;
+    }  
+	
+}
+
+</script>
+</body>
+</html>

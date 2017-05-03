@@ -1,0 +1,34 @@
+<html>
+<head>
+
+<h>Welcome! </h>
+<div class = "login">
+<p id = "buwa">Buwa</p>
+Username = <input type = "text" class = "a" name = "loginU"></input></div>
+<p id = "myCart" style = "display:none">My cart</p>
+
+
+<script>
+verifyLogin();
+
+	function verifyLogin(){
+	var xhttp = new XMLHttpRequest();
+  	xhttp.open("GET", "loginverify.php", false);
+  	xhttp.send();
+  	var status = xhttp.responseText;
+  	//var status = "true";
+  	alert (status);
+  	if (status == "true"){
+  		alert ("lll");
+  		var x = document.getElementsByClassName("a");
+		var i;
+		for (i = 0;i < x.length;i++){
+			x[i].style.display = "none"; 
+		}
+  		document.getElementById("buwa").style.display = "none";
+  	}
+	}
+</script>
+
+</head>
+</html>

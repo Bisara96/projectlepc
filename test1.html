@@ -1,0 +1,173 @@
+<html>
+<head>
+ 
+
+
+
+</head>
+<body>
+<div id = "div1"></div>
+
+<script>
+//create();
+
+addNew();
+function addNew(){
+    alert("hghghhg");
+
+/*
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "prodLoad.php" ,false);
+  xhttp.send();
+*/
+  //var word = xhttp.responseText;
+	var word = "rm0006//uploads/508286.jpg//new ram1 //RAM//rm0007//uploads/508286uuuu.jpg//new ram2 //RAM//rm0008//uploads/508286.jpg//new ram3 //RAM//rm0009//uploads/508286.jpg//new ram4 //RAM//";
+  if (word != "") {
+  var arra = new Array();
+  arra = word.split("//");
+
+ // arra.pop();
+  var noOfprods = (arra.length-1)/4; //to omit the blank in the last index of the array
+
+  var newprods = Array();
+
+  var m = 0;
+  var x = 0;
+
+  while (m < noOfprods && (x < arra.length - 1)) {
+    var newarra = arra.slice(x,x = x + 4); 
+    
+    newprods[m] = Array();
+
+    newprods[m] = newarra;
+
+    m++;
+
+}
+
+  for (var i = 0;i < newprods.length;i++){
+
+    var prodId = newprods[i][0];
+	//alert(newprods[i][0]);
+    var imgSrc = newprods[i][1];
+    var prodName = newprods[i][2];
+    var prodType = newprods[i][3];
+    var radioName = "radioname";
+    var divId = "";
+    //alert(" prodId"+prodId+" imgSrc "+imgSrc+" prodName"+prodName+" prodType"+prodType+"");
+	/*
+    var image = document.createElement("IMG");
+    image.id = prodId;
+    image.name = prodId;
+    image.setAttribute("src", imgSrc);
+    image.setAttribute("width", "304");
+    image.setAttribute("width", "228");
+    image.setAttribute("alt", prodName);
+    image.setAttribute("class", "pImgClass");
+    image.setAttribute("style", 'display:none;width="300";height="250";');
+
+    switch (prodType){
+      case "CPU" :
+      radioName = "cpu";
+      var div = document.getElementById("cpuList1");
+      break;
+      case "RAM" :
+      radioName = "ram";
+      var div = document.getElementById("ramList1");
+      break;
+      case "HARD" :
+      radioName = "hard";
+      var div = document.getElementById("hdList1");
+      break;
+      case "HARD(SECONDARY)" :
+      radioName = "hardSec";
+      var div = document.getElementById("hdSecList1");
+      break;
+      case "Mother Board" :
+      radioName = "mb";
+      var div = document.getElementById("mbList1");
+      break;
+      case "OPTICAL DRIVE" :
+      radioName = "cd";
+      var div = document.getElementById("cdList1");
+      break;
+      case "CASE" :
+      radioName = "uni";
+      var div = document.getElementById("uniList1");
+      break;
+      case "GRAPHICS CARD" :
+      radioName = "grap";
+      var div = document.getElementById("grapList1");
+      break;
+      case "OS" :
+      radioName = "os";
+      var div = document.getElementById("osList1");
+      break;
+      case "POWER SUPPLY" :
+      radioName = "pow";
+      var div = document.getElementById("powList1");
+      break;
+      case "SOUND CARD" :
+      radioName = "snd";
+      var div = document.getElementById("sndList1");
+      break;
+
+    }
+	
+    */
+	var div = document.getElementById("div1");
+	
+    //var divimg = document.getElementById("pImgID");
+    //divimg.appendChild(image);
+
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = radioName;
+    radio.value = prodId;
+    //alert(radio.value);
+
+	
+    //radio.onclick = function myfunc(){ alert('this is test'); };
+	radio.addEventListener("click",function(){alert("finally done!");});
+	
+    var text = document.createTextNode(prodName);
+    div.appendChild(radio);
+    div.appendChild(text);
+	//div.innerHTML = "Here";
+    div.innerHTML = div.innerHTML + "<br />";
+	//radio.addEventListener("click", function(){ alert("this is test"); });
+
+    //alert("end one");
+    }
+   // alert("end two");
+
+  }
+ // alert("end three");
+
+}
+
+
+function create(){
+alert("blblblblblb");
+var array =  ["Toyota", "Volvo", "BMW"];
+
+for (var i = 0;i < array.length;i++){
+alert(array[i]);
+var radio = document.createElement("input");
+radio.type = "radio";
+radio.id = array[i];
+radio.value = array[i];
+radio.name = array[i];
+
+var text = document.createTextNode(array[i]);
+radio.addEventListener("click",function(){alert("finally done!");});
+
+var div1 = document.getElementById("div1");
+
+div1.appendChild(radio);
+div1.appendChild(text);
+}
+}
+</script>
+</body>
+</html>

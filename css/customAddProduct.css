@@ -1,0 +1,77 @@
+
+
+
+
+
+
+.FrmHeader {
+
+margin-bottom: 20px;
+font-family: 'Roboto', sans-serif;
+color : #ffffff;
+}
+
+
+
+.form-group {
+	margin-bottom: 20px;
+	width : 100%;
+	
+
+}
+
+
+
+.detailFrm {
+	margin-top:  11%;
+	margin-bottom: 11%;
+	position: relative;
+	
+
+	border: 2px solid #ffffff;
+	border-radius: 25px;
+	
+	min-width: 200px;
+	max-width: 384px;
+
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#Fname {
+
+	margin-left: 20px;
+}
+
+.btn-success{
+
+	margin-right: 10px;
+
+}
+
+
+.btn-danger{
+
+margin-right: 10px;
+
+
+}
+
+.btn-default{
+
+	margin-left: 11px;
+}
+
+label {
+
+	color: #ffffff;
+
+}
+

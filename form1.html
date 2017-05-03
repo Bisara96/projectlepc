@@ -1,0 +1,74 @@
+
+<html>
+<head>
+<title></title>
+
+</head>
+<body>
+<form action="formprocessor.html" method="get">
+	<fieldset>
+		<legend>Application Form </legend>
+<table cellpadding="8">
+<tr>
+	<td>Name</td>
+	<td><input type="text" id="txtName" size=30 value=""></td>
+</tr>
+
+<tr>
+	<td>Adress</td>
+	<td><input type="text" id="txtAdd" size=30 value=""></td>
+</tr>
+
+
+<tr>
+	<td>Gender</td>
+	<td><input type="radio" name="sex"  value="M">Male
+	    <input type="radio" name="sex"  value="F">Female</td>
+
+
+</tr>
+
+<tr>
+	<td>Modules</td>
+	<td><input type="checkbox" name="modules" value="m1">M1
+	<input type="checkbox" name="modules" value="m2">M2
+	<input type="checkbox" name="modules" value="m3">M3
+	<input type="checkbox" name="modules" value="m4">M4</td>
+
+
+</tr>
+<tr>
+<td>Stream
+</td>
+<td><select name="Stream">
+<option id="0" value="SE">SE</option>
+<option id="1" value="ISBM">ISBM</option>
+<option id="2" value="CS">CS</option></td></tr>
+<tr>
+<td><input type="button" name="submit" value="OK" onclick="clickOk()">
+<input type="reset" value="Reset form"></td></tr>
+</table>
+</fieldset>
+</form>
+	<div id="display"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+function clickOk(){
+
+if(document.getElementById("txtName").value!=""){
+	if(document.getElementById("txtAdd").value!=""){
+		var nam=document.getElementById("txtName").value;
+		var add=document.getElementById("txtAdd").value;
+	document.getElementById("display").innerHTML='<hr>Hi '
+	+nam+'<br>Address: '+add; }
+	else
+		alert("please enter your Address");
+	}
+else 
+	alert("please enter your Name");
+}
+
+</script> 

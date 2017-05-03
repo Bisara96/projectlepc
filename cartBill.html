@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<body>
+<table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Type</th>
+          <th>Product price </th>
+          <th>Dealer name </th>
+        </tr>
+      </thead>
+	  
+      <tbody>
+
+			<?php 
+				SESSION_START(); 
+ 
+				$email = $_SESSION['email'];
+
+				$x = 0;
+				$c = 0;
+				for ($c = 0;$c <= 10;$c++){
+				?> <tr> <?php
+					for ($x = 0;$x < sizeof($_SESSION['$email'][0]);$x++){
+
+
+								?>
+								<td><?php echo "bla"; ?><td>
+								<?php
+		
+								
+		
+														}
+								?> </tr> <?php
+								
+											}
+
+
+				?>
+
+     </tbody>
+    </table>
+    </body>
+    </html>

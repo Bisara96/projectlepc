@@ -1,0 +1,41 @@
+
+<html>
+	<head>
+		<h1>This is a poll</h1>
+	</head>
+	<body>
+	<div id = "demo"><p>What is the best pc</p></div>
+	<div class = "answers">
+		
+		<label for = "userSel">your answer....</label>
+		<input type = "radio" id = "userSel" name = "userSel" value = "Mac" onclick = "displaypoll();loadDoc('Mac');">Mac</input>
+		<input type = "radio" id = "userSel" name = "userSel" value = "Dell" onclick = "displaypoll();loadDoc('Dell');">Dell</input>
+		
+		
+		</div>
+			
+		
+		
+	</body>
+</html>
+
+<script>
+	function displaypoll(){
+		var y = document.getElementsByClassName("answers");
+		var x = 0;
+		for (x = 0;x < y.length;x++ ){
+			y[x].style.display = "none";
+		}
+		
+
+	}
+
+	function loadDoc(sel) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "pollphp.php?user=" + sel, false);
+  xhttp.send();
+  document.getElementById("demo").innerHTML = xhttp.responseText;
+
+}
+
+</script>

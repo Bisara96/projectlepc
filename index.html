@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>LePc</title>
 
  <!-- Bootstrap -->
  <link href='logincss.css' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
      <link href="css/custom.css" rel="stylesheet">
      <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+     <script src="js/quiz.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,27 +25,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	  
-	   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+function getVote(int) {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("poll").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","poll_func.php?vote="+int,true);
+  xmlhttp.send();
+}
+</script>
+ 
   </head>
   
     <body>
        <script>
-       function onlogin(){
-                alert ("clicked");
-                  }
+       verifyLogin();
 
       function onloginbtn() {
         //alert ("bbbbbbbbb");
-      
+    document.getElementById("customer").style.display = "block";
+    document.getElementById("dealer").style.display = "none";
     var loginBox = document.getElementById("login-box");
 
     //Fade in the Popup and add close button
@@ -74,6 +84,16 @@
     
   }
 
+  function disCus(){
+    document.getElementById("customer").style.display = "block";
+    document.getElementById("dealer").style.display = "none";
+  }
+
+  function disDea(){
+    document.getElementById("customer").style.display = "none";
+    document.getElementById("dealer").style.display = "block";
+  }
+
   function closebtnfunc(){
     var x = document.getElementsByClassName("login-popup");
     var i = 0;
@@ -92,7 +112,13 @@
     xhttp.open("GET", "loginhome_php.php?em="+email+"&ps="+password, false);
     xhttp.send();
     var status = xhttp.responseText;
-    if (status == "Successfull"){
+    if (status == "customer"){
+      alert ("Login Success!!");
+      closebtnfunc();
+      verifyLogin();
+    // document.location = 'index.html';
+     exit();
+    } else if (status == "dealer"){
       alert ("Login Success!!");
       closebtnfunc();
       verifyLogin();
@@ -108,6 +134,36 @@
 
   }
 
+  function ondeasignin(){
+
+    var email = document.getElementById("usernameD").value;
+    var password = document.getElementById("passwordD").value;
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "loginD_page.php?em="+email+"&ps="+password, false);
+    xhttp.send();
+    var status = xhttp.responseText;
+    //alert(status);
+    if (status == "customer"){
+      alert ("Login Success!!");
+      closebtnfunc();
+      verifyLogin();
+    // document.location = 'index.html';
+     exit();
+    } else if (status == "dealer"){
+     //alert("here");
+      alert ("Login Success!!");
+      closebtnfunc();
+      verifyLogin();
+    // document.location = 'index.html';
+     exit();
+    } else if (status == "failed"){
+      alert ("Invalid login credentials! Try again");
+    } else {
+      alert ("Email not found!Please try again");
+    }
+  }
+
   function onlogoutbtn(){
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "signout.php", false);
@@ -117,6 +173,52 @@
   
   
     </script>
+
+
+    <div id="login-box" class="login-popup">
+        <a href="#" class="close"><img src="close_pop.png" class="btn_close" onclick="closebtnfunc()" title="Close Window" alt="Close" /></a>
+          <form method="post" id = "customer" class="signin" action="#">
+          <p>Here to sell your products? Login<a href= "#" onclick="disDea();"> here </a>as a dealer </p>
+                <fieldset class="textbox" align="center">
+              <label class="username">
+                <span align="left">Email</span>
+                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username" style = "width:100%;">
+                </label>
+                
+                <label class="password">
+                <span align="left">Password</span>
+                <input id="password" name="password" value="" type="password" placeholder="Password" style = "width:100%;">
+                </label>
+                
+                <button class="submit button" type="button" onclick="onsigninbtn()" style = "width:100%;">Sign in</button><br><br>
+                 <p>Not registered yet? <a href= "formpage.html">Sign up</a> now</p>
+                
+               
+                
+                </fieldset>
+          </form>
+
+          <form method="post" id="dealer" class="signin" action="#">
+           <p>Here to start buying products? Login<a href= "#" onclick="disCus();"> here </a>as a customer </p>
+                <fieldset class="textbox" align="center">
+              <label class="username">
+                <span align="left">Email</span>
+                <input id="usernameD" name="usernameD" value="" type="text" autocomplete="on" placeholder="Username" style = "width:100%;">
+                </label>
+                
+                <label class="password">
+                <span align="left">Password</span>
+                <input id="passwordD" name="passwordD" value="" type="password" placeholder="Password" style = "width:100%;">
+                </label>
+                
+                <button class="submit button" type="button" onclick="ondeasignin()" style = "width:100%;">Sign in</button><br><br>
+                <p>Not registered yet? <a href= "formpage.html">Sign up</a> now</p>
+                
+               
+                
+                </fieldset>
+          </form>
+    </div>
    
 
         
@@ -134,14 +236,14 @@
     						<span class="icon-bar"></span>
     					</button>
     					<div class="navbar-brand" href="#">
-    						<img id="brand-image" alt="Le PC"  src="logopng.png"/>
+    						<a href = "index.html" ><img id="brand-image" alt="Le PC"  src="logopng.png"/></a>
     					</div>
 			    	</div>
 					<div>
 					<!--Menu Items-->
 						<div class="collapse navbar-collapse" id="mainNavBar">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="index.html">HOME</a></li>
+								<li ><a href="index.html">HOME</a></li>
 								<li ><a href="products.html">BUILD YOUR PC</a></li>
 								
 
@@ -150,55 +252,77 @@
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">PRODUCTS<span class="carrot"></span></a>
 									<ul class="dropdown-menu">
-										<li ><a href="#">CUSTOM PCs</a></li>
+										<li ><a href="products3.html#tips">CUSTOM PCs</a></li>
 										<li class="divider"></li>
-										<li ><a href="#">Mac</a></li>
+										<li ><a href="products3.html#macs">Mac</a></li>
 										<li ><a href="#">Laptops</a></li>
-										<li ><a href="#">Branded PCs</a></li>
+										<li ><a href="products3.html#bpcs">Branded PCs</a></li>
 										
 									</ul>
 								</li>
-								<li ><a href="#">CONTACT US</a></li>
+								<li ><a href="contactus.html">CONTACT US</a></li>
+                <li ><a href="aboutus.html">ABOUT US</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
         						<li><a class="btn btn-primary btn-lg outline" href="formpage.html" role="button" id = "signup">SIGN UP</a></p>
                       <li><a class="btn btn-primary btn-lg outline" href="cartBill1.php" role="button" id = "mycart" style="display:none">MY CART</a></p>
+                      <li><a class="btn btn-primary btn-lg outline" href="viewdproducts.php" role="button" id = "myprod" style="display:none">My Products</a></p></li>
+                      <li><a class="btn btn-primary btn-lg outline" href="viewSales.php" role="button" id = "mycus" style="display:none">My Sales</a></p></li>
         						<li id = "loginbtn" role = "button" onclick="onloginbtn()"><a>LOG IN</a></li>
-                    <li id = "logoutbtn" role = "button" style="display:none" onclick="onlogoutbtn()"><a>LOG OUT</a></li>
+                    <!-- <li><p>
+        <button type="button" class="btn btn-default btn-sm" id = "logoutbtn" role = "button" style="display:none" onclick="onlogoutbtn()">
+          <span class="glyphicon glyphicon-off"></span><div id = "name"></div></button>
+      </p></li> -->
+      <li> <a id = "logoutbtn" class="btn btn-primary btn-lg outline" role = "button" onclick="onloginbtn()"><span class="glyphicon glyphicon-off"></span> &nbsp<span id = "name"></span></a></li>
      	 					</ul>
                 <script>
                   
                   verifyLogin();
-
+				  checkquiz();
                   function verifyLogin(){
+                    //alert("here");
                        var xhttp = new XMLHttpRequest();
                         xhttp.open("GET", "loginverify.php", false);
                         xhttp.send();
                         var status = xhttp.responseText;
+						
                         //var status = "true";
-                        //alert (status);
-                        if (status == "true"){
+                        //alert(status);
+                        if (status == "customer"){
                                                 
                          document.getElementById("loginbtn").style.display = "none";
                          document.getElementById("logoutbtn").style.display = "block";
                          document.getElementById("signup").style.display = "none";
                          document.getElementById("mycart").style.display = "block";
-                    } else {
+                         document.getElementById("myprod").style.display = "none";
+                         document.getElementById("mycus").style.display = "none";
+                         getname();
+                        } else if(status == "dealer"){
+                         document.getElementById("loginbtn").style.display = "none";
+                         document.getElementById("logoutbtn").style.display = "block";
+                         document.getElementById("signup").style.display = "none";
+                         document.getElementById("myprod").style.display = "block";
+                         document.getElementById("mycus").style.display = "block";
+                         getname();
+
+                        } else {
                          document.getElementById("loginbtn").style.display = "block";
                          document.getElementById("logoutbtn").style.display = "none";
                          document.getElementById("signup").style.display = "block";
                          document.getElementById("mycart").style.display = "none";
+                         document.getElementById("myprod").style.display = "none";
+                         document.getElementById("mycus").style.display = "none";
                     }
                }
 
-               function onlogoutbtn(){
-                alert ("b1");
-               var xhttp = new XMLHttpRequest();
-                xhttp.open("GET", "signout.php", false);
-                xhttp.send();
-                alert ("b2");
-                verifyLogin();
+              function getname(){
+                var http = new XMLHttpRequest();
+                http.open("GET" ,"getnamelog.php" ,false);
+                http.send();
+                document.getElementById("name").innerHTML = http.responseText;
               }
+               
+
 
                
                 </script>
@@ -278,7 +402,7 @@
     <div class="container marketing">
 
     	
-		<center><h1>SIMPLE STEPS TO GET YOUR MACHINE UP AND RUNNING!</h1></center>
+		<center><h1>Simple Steps To Build Your PC !!</h1></center>
 		<hr class="featurette-divider">
 
       <!-- Three columns of text below the carousel -->
@@ -303,6 +427,125 @@
         	</div>
       </div>
     </div><br><br>
+<div id = "quizdiv">
+          <div class="container" >   
+      <div class="jumbotron" >   
+        <h1>Quiz</h1>         
+        <p>Take our 10 question quiz and know how much you know about computers and their components!</p> 
+        <p>You will be awarded 2 marks for each correct answer and will be deducted -1 marks for each wrong answer</p>  
+        <h2 id="test_status"></h2>    
+        <div id="test"></div>   
+      </div>        
+</div>
+</div>
+<script type="text/javascript">
+  checkquiz();
+function checkquiz(){
+  //alert("here");
+  var http = new XMLHttpRequest();
+  http.open("GET" ,"checkquiz.php" ,false);
+  http.send();
+  var checkQ = http.responseText;
+  //alert(checkQ);
+  if (checkQ == "true"){
+    //alert("here");
+  document.getElementById("quizdiv").innerHTML = "";
+    }
+  
+  }
+</script>
+   <div class="container poll">
+
+
+      <div class = "well">
+      <div class= "pollheader">
+        <h2> Weekly Poll ! </h2>
+      </div>
+      <h3> Is Apple Macintosh better than Windows?</h3>
+
+      <div class = "PollQuestion" id = "poll">
+      
+      
+
+       <form role="form">
+          <div class="radio">
+            <label><input type="radio" name="vote" value="0" onclick="getVote(this.value)">Yes</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="vote" value="1" onclick="getVote(this.value)">No</label>
+          </div>
+          
+        </form>
+      
+      </div>
+
+     </div> 
+
+  </div>
+
+        <div class="container">
+      <hr class="featurette-divider">
+      <div class="panel panel-warning">
+        
+        <div class="panel-heading">
+         <center><h1>How To Assemble Your Machine? </center></h1>
+        
+        </div>
+        <div class="panel-body">
+          <div class="embed-responsive embed-responsive-16by9 hidden-xs">
+          
+          <iframe  class="embed-responsive-item"src="https://www.youtube.com/embed/XdWnOglAx_c" allowfullscreen></iframe>
+          </div>
+          <p class="visible-xs hidden-sm"> The video has been removed because the screen is small , please move on to a bigger screen. </p>
+        </div>
+      </div>
+    </div>
+
+  <div class= "site-footer">
+     <div class= "container footerinfo">     
+    <div class= "row-fluid">
+      
+      <div class="col-sm-4">
+        
+          <h4>Social Media</h4>
+       
+        
+        <a href = "#facebook">Facebook</a><br>
+        <a href = "#instagram">Instagram</a><br>
+        <a href = "#google+">Google+</a><br>
+        
+       
+        
+      
+      </div>
+      <div class="col-sm-4">
+        <h4>Products</h4>
+        
+        <a href = "#products-mac">Macs</a><br>
+        <a href = "#products-custom">Branded PCs</a><br>
+        <a href = "#build your - pc">Custom PCs</a><br>
+        
+        
+        
+      </div>
+      <div class="col-sm-4">
+      <h4>Contact Details</h4>
+      
+        Email - socod@gmail.com<br>
+        Mobile - 0776383151<br>
+        Address - No.88,Perera Road, Colombo 05.<br>
+        
+      
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="copyright">
+  © 2016 Team SauceCode
+  </div>
+         
+ </body>
+</html>
          
 
  </body>

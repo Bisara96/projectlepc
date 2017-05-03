@@ -1,0 +1,134 @@
+<html>
+<head>
+</head>
+<body>
+will be added under this <br>
+<div id="print">
+	
+</div>
+<br><br><br><br>
+<div id="ram">
+</div>
+<br><br><br><br>
+<div id="pImgId">
+</div>
+before this
+<script>
+array();
+function addnew(input){
+var x = document.createTextNode(input);
+var y = document.getElementById("print");
+y.appendChild(x);
+
+}
+
+function array(){
+	var word = "rm0006//uploads/508286.jpg//new ram1 //RAM//rm0007//uploads/508286uuuu.jpg//new ram2 //RAM//rm0008//uploads/508286.jpg//new ram3 //RAM//rm0009//uploads/508286.jpg//new ram4 //RAM//";
+	var arra = new Array();
+	arra = word.split("//");
+	alert(arra.length);
+	for (var i = 0;i < arra.length;i++){
+		//alert(i);
+		//addnew(arra[i]);
+	}
+
+	var noOfprods = (arra.length-1)/4;
+	alert ("nfp"+noOfprods);
+	var newprods = Array();
+
+	var m = 0;
+	var x = 0;
+	while (m < noOfprods && (x < arra.length - 1)) {
+		var newarra = arra.slice(x,x = x + 4); 
+		
+		newprods[m] = Array();
+/*
+		for (var c = 0;c < newarra.length;c++){
+			alert(newarra[c]);
+		}
+*/
+		newprods[m] = newarra;
+/*
+		for (var r = 0;r < newprods[m].length;r++){
+			alert(newprods[m][r]);
+		}
+*/
+		m++;
+
+}
+
+for (var y = 0;y < newprods.length;y++){
+
+	var image = document.createElement("img");
+	alert(newprods[y][1]);
+	image.setAttribute("src", "");
+	image.id = "image";
+	image.name = "image";
+    var text = document.createTextNode(newprods[y]+" image");
+    var label = document.createElement("label");
+    label.htmlfor = image.id;
+    label.appendChild(image);
+    label.appendChild(text);
+    var div = document.getElementById("print");
+    div.appendChild(text);
+    div.appendChild(image);
+
+}
+
+
+
+
+
+
+}
+
+function addNew(){
+    //alert("BBBBB");
+
+
+    var x = document.createElement("IMG");
+    x.id = "image2";
+    x.name = "image2";
+    x.setAttribute("src", "");
+    x.setAttribute("width", "304");
+    x.setAttribute("width", "228");
+    x.setAttribute("alt", "image");
+    x.setAttribute("style", "display:none;");
+    x.setAttribute("style", 'display:none;width="300";height="250";');
+    
+    var divimg = document.getElementById("pImgID");
+    divimg.appendChild(x);
+
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.id = "ram";
+    radio.name = "ram";
+    radio.value = "image2";
+    var idd = document.getElementById("image2");
+    
+    radio.onclick = function myfunction() { 
+        var id = document.getElementById();
+    var y = document.getElementsByClassName("pImgClass");
+    var z;
+    for (z = 0;z < y.length;z++){
+      y[z].style.display = "none"; 
+    }
+    document.getElementById(document.getElementById("ram").value).style.display = "block"; };
+  
+
+    radio.onclick = function() { alert('blah'); };
+
+    var text = document.createTextNode("New ram");
+    var label = document.createElement("label");
+    label.htmlfor = radio.id;
+    label.appendChild(radio);
+    label.appendChild(text);
+    
+    var div = document.getElementById("ram");
+    div.appendChild(radio);
+    div.appendChild(label);
+    //alert("created");
+  }
+</script>
+</body>
+</html>
