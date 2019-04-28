@@ -20,14 +20,13 @@ $loginstatus = "loginstatus$email";
 
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    ?>
 
-	?>
+<script>
+if (!alert("The email you entered is not valid")) document.location = 'formpage.html';
+</script>
 
-	<script>if(!alert("The email you entered is not valid")) document.location = 'formpage.html';</script>
-
-	<?php
-
-
+<?php
 }
 
 
@@ -52,7 +51,7 @@ $password = "";
 $dbname = "db2";*/
 
 // Create connection
-$conn = mysqli_connect("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
+$conn = mysqli_connect("localhost", "root", "", "db2");
 
 // Check connection
 
@@ -63,12 +62,14 @@ if (!$conn) {
 
 
 $query = mysqli_query($conn, "SELECT * FROM  formData WHERE emailAdd = '".$email."'");
-if(mysqli_num_rows($query) > 0){
-	?>
-	<script>if(!alert("The email you entered is already in use! please use a different one")) document.location = 'formpage.html';</script>
-	<?php
-	
-	exit();
+if (mysqli_num_rows($query) > 0) {
+    ?>
+<script>
+if (!alert("The email you entered is already in use! please use a different one")) document.location = 'formpage.html';
+</script>
+<?php
+    
+    exit();
 }
 
 
@@ -81,17 +82,14 @@ if (!(mysqli_query($conn, $sql))) {
 
 mysqli_close($conn);
 
-if (!(isset($_SESSION['$loginstatus']))){
-						$_SESSION['$loginstatus'] = "false";
-					}
+if (!(isset($_SESSION['$loginstatus']))) {
+    $_SESSION['$loginstatus'] = "false";
+}
 
-					$_SESSION['$loginstatus'] = "true";
+                    $_SESSION['$loginstatus'] = "true";
 
-if(!isset($_SESSION['email'])){
-				$_SESSION['email'] = "";
-	
-	
-	
+if (!isset($_SESSION['email'])) {
+    $_SESSION['email'] = "";
 }
 
 
@@ -100,9 +98,6 @@ $_SESSION['email'] = $email;
 
 ?>
 
-<script>if(!alert("Registration Successfull!")) document.location = 'index.html';</script>
-
-
-  
-
-
+<script>
+if (!alert("Registration Successfull!")) document.location = 'index.html';
+</script>
