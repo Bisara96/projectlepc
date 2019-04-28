@@ -281,9 +281,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object{
 
 main.pc-builder { padding: 0; }
 
-.builder-form { padding: 80px 100px 100px 100px; background: #222 url(/builder/builder-bg-new.png) no-repeat; color: white; background-size: cover; }
+.builder-form { padding: 80px 100px 100px 100px; background: #222 url(sliderImages/custompc.jpg) no-repeat; color: white; background-size: cover; }
 	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-		.builder-form { background-image: url(/builder/builder-bg-new@2x.png) }
+		.builder-form { background-image: url(sliderImages/custompc.jpg) }
 	}
 
 	.hp-builder .builder-form { background-image: url(https://cdn.wccftech.com/wp-content/uploads/2018/10/hp-feature-2.jpg); }

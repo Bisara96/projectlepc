@@ -99,6 +99,7 @@ verifyLogin();
     xhttp.open("GET", "loginhome_php.php?em="+email+"&ps="+password, false);
     xhttp.send();
     var status = xhttp.responseText;
+    //alert(status);
     if (status == "customer"){
       alert ("Login Success!!");
       closebtnfunc();
@@ -197,13 +198,13 @@ verifyLogin();
                         var status = xhttp.responseText;
                         //var status = "true";
                         //alert (status);
-                        if (true){ //status == "customer"
+                        if (status == "customer"){
                                                 
                          document.getElementById("loginbtn").style.display = "none";
                          document.getElementById("logoutbtn").style.display = "block";
                          document.getElementById("signup").style.display = "none";
                          document.getElementById("mycart").style.display = "block";
-                         //getname();
+                         getname();
                     } else if (status == "dealer"){
                       alert("Please login as a customer");
                         onloginbtn();
@@ -247,7 +248,7 @@ verifyLogin();
 
       <!-- slider -->
 
-      <div id ="theCarousel" class="carousel slide" data-ride="carousel">
+      <!-- <div id ="theCarousel" class="carousel slide" data-ride="carousel">
 
         <ol class = "carousel-indicators">
           <li data-target = "#theCarousel" data-slide-to="0" class = "active"></li>
@@ -265,15 +266,21 @@ verifyLogin();
                           
                      </div>
                  </div>
-        </div>  
+        </div>   -->
 
        
-
         <main class="wrap clearfix pc-builder">
 
           <div class="builder-form">
             
-                
+              <br>
+              <br>
+              <div class="carousel-caption" style="position: unset">
+                  <h1>Build Your Own Beast!</h1>
+                    <p>Build your own PC with our PC builder which has an updated item list.</p>
+                    
+               </div>
+               <br> 
             <fieldset>
               
               <form class="form_build_pc clearfix" id="form_build_pc" method="post" onsubmit="return false;">
@@ -493,32 +500,6 @@ verifyLogin();
                 </form>
               </div>
             </div>
-            
-            <div class="notes">
-              
-              <p>Whether you are looking for a gaming pc builder or just looking to build a pc for your personal needs, PC Builder by Wccftech is here to help you make a better-informed decision when attempting to build your dream machine. Our intelligent tool churns out a complete build using a human-like thought process and considerations, that go into building something as personal as a custom PC. We have made sure that, all individual components of the resultant build complement each other, are efficient, and automatically compatibility and price checked to bring to you the best possible deal. </p>
-              <p>We understand, that building a PC involves personal affinity for a variety of brands and OEMs. This is why we have also included into the application, the ability to show you components that fit the budget that you have set, offering comparable performance to our tool’s original choice – allowing you to further ‘customize’ the rig as per your liking.</p>
-              <br>
-              <h4>Notes</h4>
-              <ol>
-                <li id="note1">The gaming build logic is based on a 4K60 target philosophy.</li>
-                <li id="note2">Advanced options (Overclocking and RGB) are only available on builds higher than $1000.</li>
-                <li id="note3">By using this tool you agree to the fact that 1) the build is provided on an “As Is” basis as a suggestion and 2) we cannot guarantee that the tool is free from all errors and omissions and therefore 3) Wccftech and related parties are not in any way responsible for any liability or damage resulting from the use or misuse of this tool.</li>
-                <li id="note4">Product prices and availability are accurate as of today and are subject to change. We update prices using the Amazon Product Advertising API twice every day. Any price and availability information displayed on Amazon at the time of purchase will apply to the purchase of the product listed above.</li>
-                <li id="note5">For maximum performance you can opt for a <a target="_blank" href="http://www.amazon.com/dp/B06Y5C27Y3/?tag=wccftech0a9-20">Geforce GTX Titan Xp (Pascal)</a>. However since that is a reference design, we have not included it in the core build logic. If you want to go the extra mile you can get that and couple it with a good aftermarket liquid cooler for great overclocking performance and the ultimate in gaming hardware.</li>
-              </ol>
-            </div>
-          </div>
-          
-          <div class="banner-ad" style="margin: 0 auto 0 auto; padding-bottom: 50px">
-            <!-- 728x90 BTF -->
-            <!-- /8095840/.2_12301.3_wccftech.com_tier1 -->
-            <div id='div-gpt-ad-1505739590046-0'>
-            <script>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1505739590046-0'); });
-            </script>
-            </div>
-          </div>
           
         </main>
 

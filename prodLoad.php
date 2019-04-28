@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-$mysqli = new mysqli("lepc.database.windows.net","saucecode","TheGoviya1234","db2");
+$mysqli = new mysqli("localhost", "root", "", "db2");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
