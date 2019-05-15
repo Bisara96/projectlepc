@@ -1,12 +1,14 @@
 <?php 
 session_start();
 
+include 'db_config.php';
+
 
 $prodName = $_POST['pName'];
 $prodId = "";
 
 
-$mysqli = new mysqli("localhost", "root", "", "db2");
+$mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
 /* check connection */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());

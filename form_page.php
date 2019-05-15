@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+include 'db_config.php';
 
 
 
@@ -51,7 +51,7 @@ $password = "";
 $dbname = "db2";*/
 
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "db2");
+$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 
 // Check connection
 
